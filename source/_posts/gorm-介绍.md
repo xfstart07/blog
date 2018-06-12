@@ -29,6 +29,8 @@ func main() {
 
 ps. gorm 还支持 `sqlite3`, `postgreSQL`, `SQL server` 等数据库
 
+<!--more-->
+
 ### 迁移 Migrate
 `Auto Migration` 比较简单，目前只支持创建表的操作，不支持在建表后修改字段、索引的操作。
 

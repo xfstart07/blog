@@ -19,6 +19,8 @@ tags:
 
 ps. 上面是 MDN 的文档介绍。
 
+<!--more-->
+
 ### Gin 添加跨域的中间件
 Gin 是一个Go 开发的 Web 框架，给 Gin 加 CORS 的支持也是非常简单的。
 

@@ -66,6 +66,8 @@ type CreditCard struct {
 }
 ```
 
+<!--more-->
+
 ### 模型约定
 `gorm.Model` 结构体
 

@@ -20,6 +20,8 @@ Update(20180511): 之前使用的触发方法存在提交时多个分支同时�
 
 {% img http://pa1so03xn.bkt.clouddn.com/images/0_KN6aqOdu6uPdI-Jc.png %}
 
+<!--more-->
+
 #### 创建项目触发器
 配置路径：项目-配置-构建触发器
 

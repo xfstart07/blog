@@ -27,6 +27,8 @@ go get -u github.com/derekparker/delve/cmd/dlv
 xcode-select --install
 ```
 
+<!--more-->
+
 但是升级后的CommandLineTools 的debug api有变化，目前暂时没法用兼容目前的delve。
 
 4. 安装 dlv

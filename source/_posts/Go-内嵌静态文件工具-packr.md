@@ -39,6 +39,8 @@ fmt.Println("Bytes: ", htmlByte)
 // 对应的还有 MustBytes 方法
 ```
 
+<!--more-->
+
 packr 在查找文件时的解析规则：
 
 * 在二进制文件中，在内存中查找文件

@@ -41,6 +41,8 @@ func main() {
 
 使用 `NewFile()` 方法来创建一个Excel 文件，然后创建一个 Sheet，使用方法 `AddSheet()`，还有添加行和表格的方法 `AddRow()` 和 `AddCell()`
 
+<!--more-->
+
 ### 打开并写入
 首先我们来打开一个 `xlsx` 的文件，使用 `OpenFile()` 方法。
 

@@ -16,6 +16,7 @@ Centrifugo 可以方便的集成到现有服务当中。
 
 {% img http://pa1so03xn.bkt.clouddn.com/images/0_hxTfRyG_JfKZaii8.png %}
 
+<!--more-->
 
 ## 使用
 下载地址：https://github.com/centrifugal/centrifugo/releases
