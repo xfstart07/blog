@@ -5,8 +5,10 @@ categories: Docker
 tags: docker
 ---
 
-# Docker 操作容器
 容器是 Docker 的一个核心概念。
+
+**容器是什么？**
+
 容器是独立运行的一个或一组应用，以及它们的运行态环境。
 
 ### 启动容器
@@ -32,10 +34,33 @@ docker run -it centos /bin/bash
 ### 后台运行
 使用 `-d` 参数。
 
+**为什么要在后台运行？**
+
+在不使用`-d`参数运行容器。
+
+```
+$ docker run ubuntu:17.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+hello world
+hello world
+hello world
+hello world
+```
+容器会把输出的结果(STDOUT) 打印到宿主上。
+
+使用 `-d`运行容器。
+
+```
+$ docker run -d ubuntu:17.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+77b2dc01fe0f3f1265df143181e7b9af5e05279a884f4776ee75350ea9d8017a
+```
+使用 `-d`参数启动会返回一个唯一id，表示容器的ID。
+
+**注**： 容器是否会长久运行，是和 docker run 指定的命令有关，和 -d 参数无关。
+
 要获取容器的输出信息，可以通过 `docker container logs` 命令。
 
 ### 开启和终止
-用 `docker container start` 来启动一个运行中的容器。
+用 `docker container start` 来启动一个终止的容器。
 用 `docker container stop` 来终止一个运行中的容器。
 `docker container restart` 命令会将一个运行态的容器终止，然后再重新启动它。
 
@@ -58,7 +83,7 @@ root@243c32535da7:/#
 docker exec -it 69d1 bash
 root@69d137adef7a:/#
 ```
-如果从这个 stdin 中 exit，不会导致容器的停止。这就是为什么推荐大家使用 docker exec 的原因。
+如果从这个 stdin 中 exit，不会导致容器的停止。**这就是为什么推荐大家使用 docker exec 的原因。**
 
 ### 导入导出容器
 
@@ -94,4 +119,3 @@ trusting_newton
 ```
 $ docker container prune
 ```
-
