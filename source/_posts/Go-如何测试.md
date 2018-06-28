@@ -27,6 +27,8 @@ func BenchmarkXxx(b *testing.B) {}
 * `ExampleXxx` 是代码使用用例。
 * `BenchmarkXxx` 是基准测试用例。
 
+<!--more-->
+
 ### Test 运行方式
 
 `go test` 来运行后缀 `_test.go`的测试文件。

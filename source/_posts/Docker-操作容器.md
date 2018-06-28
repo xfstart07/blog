@@ -21,6 +21,8 @@ docker run -it centos /bin/bash
 `-i`让容器的标准输入保持打开。
 `-t`让 Docker 分配一个伪终端(pseudo-tty)并绑定到标准输入上。
 
+<!--more-->
+
 当利用 `docker run` 来创建容器时，Docker 在后台运行的标准操作包括：
 
 * 检查本地是否存在指定的镜像，不存在就从公有仓库下载
