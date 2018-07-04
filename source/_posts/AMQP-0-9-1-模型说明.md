@@ -16,6 +16,8 @@ tags:
 This guide provides an overview of the the AMQP 0-9-1 protocol, one of the protocols supported by RabbitMQ.
 这个指南提供了概述 AMQP 0-9-1 协议。RabbitMQ 支持的协议之一。
 
+<!--more-->
+
 ### What is AMQP 0-9-1?
 ### AMQP 0-9-1 是什么？
 
