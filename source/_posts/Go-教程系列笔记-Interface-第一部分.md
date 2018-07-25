@@ -94,3 +94,6 @@ default:
 
 play：https://play.golang.org/p/o6aHzIz4wC
 
+### 资源
+
+https://golangbot.com/interfaces-part-1/
