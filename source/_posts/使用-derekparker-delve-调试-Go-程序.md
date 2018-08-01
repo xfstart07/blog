@@ -2,9 +2,9 @@
 title: 使用 derekparker/delve 调试 Go 程序
 date: 2018-06-10 11:39:27
 categories:
-  - GO
+  - Go
 tags:
-  - GO
+  - Go
   - Debug
 ---
 

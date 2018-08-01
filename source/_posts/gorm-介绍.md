@@ -4,7 +4,7 @@ date: 2018-06-09 16:41:28
 categories:
   - Go
 tags:
-  - GO
+  - Go
   - ORM
 ---
 

@@ -2,9 +2,9 @@
 title: Go Gin 允许跨域访问
 date: 2018-06-10 10:46:55
 categories:
-  - GO
+  - Go
 tags:
-  - GO
+  - Go
   - Gin
 ---
 

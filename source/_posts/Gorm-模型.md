@@ -2,9 +2,9 @@
 title: Gorm 模型
 date: 2018-06-10 10:48:48
 categories:
-  - GO
+  - Go
 tags:
-  - GO
+  - Go
   - ORM
 ---
 

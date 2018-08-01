@@ -2,9 +2,9 @@
 title: "Go 内嵌静态文件工具 packr"
 date: 2018-06-10 11:27:30
 categories:
-  - GO
+  - Go
 tags:
-  - GO
+  - Go
 ---
 
 

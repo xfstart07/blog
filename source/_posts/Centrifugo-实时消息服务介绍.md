@@ -2,7 +2,7 @@
 title: "[Go Websocket] Centrifugo 实时消息服务介绍"
 date: 2018-06-10 10:52:39
 categories:
-  - GO
+  - Go
 tags:
   - Go
   - Websocket

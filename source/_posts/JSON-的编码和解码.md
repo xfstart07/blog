@@ -2,9 +2,9 @@
 title: "[Go] JSON 的编码和解码"
 date: 2018-06-10 11:22:36
 categories:
-  - GO
+  - Go
 tags:
-  - GO
+  - Go
   - JSON
 ---
 

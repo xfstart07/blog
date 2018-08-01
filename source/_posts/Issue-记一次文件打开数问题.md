@@ -4,7 +4,7 @@ date: 2018-07-06 14:40:08
 categories: 项目
 tags:
   - Linux
-  - Golang
+  - Go
 ---
 
 最近新上线了一个应用，上线之后跑了2天发现出现错误，一直的报 `too many open files`。
