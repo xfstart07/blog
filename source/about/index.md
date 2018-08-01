@@ -7,4 +7,4 @@ comments: false
 ## 个人介绍
 
 徐飞(Leon Xu)，男
-专注于后端开发，会写一些前端，使用语言：Go、Ruby
+专注于后端开发，Golang，Docker，Ruby，会写一些前端。
