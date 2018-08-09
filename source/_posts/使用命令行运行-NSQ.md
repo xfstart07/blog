@@ -100,7 +100,7 @@ files = /etc/supervisord.d/nsqlookupd.ini
 * `killasgroup` 默认为false，向进程组发送kill信号，包括子进程
 * `stopsignal` 进程停止信号，可以为TERM, HUP, INT, QUIT, KILL, USR1, or USR2等信号，默认为TERM
 
-nsqd 和 admin 的配置基本一样就不在贴了。
+nsqd 和 admin 的配置基本一样就不贴了。
 
 #### supervisor 更新
 
