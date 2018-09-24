@@ -118,4 +118,4 @@ Invoke Ansible Ad-Hoc commands and playbooks.
 
 ### Supervisor 配置
 
-[[Linux] 应用进程管理工具 supervisord](mweblib://15306751696104)
+[[Linux] 应用进程管理工具 supervisord](http://blog.weixinote.com/2018/09/24/Devops-%E5%BA%94%E7%94%A8%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-supervisord/)
