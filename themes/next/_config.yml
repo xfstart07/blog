@@ -374,9 +374,9 @@ changyan:
   appkey:
 
 gitalk:
-  enable: true
-  clientID: e1272eee6681286a59cc
-  clientSecret: 13564bc448799a6d04008eb1fbfe9988de5e24d8
+  enable: false
+  clientID: 8d08ef3cecf7101ff526
+  clientSecret: 4e9b416a6ff43070feaf4a32d083f2894ccc843b
   repo: https://github.com/xfstart07/weixinote.com
   owner: xfstart07
   admin: xfstart07 # support multiple admins split with comma, e.g. foo,bar
