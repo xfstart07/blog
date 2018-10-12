@@ -21,8 +21,7 @@ chmod a+x ./certbot-auto
 
 ### 配置 nginx 、验证域名所有权
 
-在虚拟主机配置文件（ /etc/nginx/conf.d/blog.ssl.conf ）中添加如下内容，这一步是为了通过 Let’s Encrypt 的验证，验证 blog.weixinote.com 这个域名是属于我的管理之下。
-
+在配置文件（ /etc/nginx/conf.d/blog.ssl.conf ）中添加如下内容，这一步是为了通过 Let’s Encrypt 的验证，验证 blog.weixinote.com 这个域名是属于我的管理之下。
 
 ```
 # certbot
@@ -35,8 +34,6 @@ location ~ /.well-known {
 
 ### 生成证书
 
-
-
 ```
 ./certbot-auto certonly --webroot -w /data/website/weixinote.com -d  blog.weixinote.com
 ```
@@ -44,7 +41,6 @@ location ~ /.well-known {
 中间会有一些自动运行及安装的软件，不用管，让其自动运行就好，有一步要求输入邮箱地址的提示，照着输入自己的邮箱即可，顺利完成的话，屏幕上会有提示信息。
 
 ### 配置 Nginx，使用 SSL 证书
-
 
 ```
 server {
