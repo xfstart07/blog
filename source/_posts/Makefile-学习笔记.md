@@ -7,7 +7,7 @@ tags: makefile
 
 `make`命令执行时，需要一个 `Makefile`文件，以告诉`make`命令需要怎么样的去编译和链接程序。
 
-> Makefile 类似像带有上下文的 shell 命令记录文本。
+> Makefile 像带有上下文的 shell 命令。将一组命令打包成一个标签名称。
 
 ### `Makefile`的规则
 
