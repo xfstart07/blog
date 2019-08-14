@@ -2,7 +2,9 @@
 title: '[Go 教程系列笔记] Channel 通道'
 date: 2018-08-01 15:09:45
 categories: Go
-tags: Go
+tags: 
+    - Go
+    - Go教程系列笔记
 ---
 
 在上一个教程中，我们讨论了如何使用 goroutine 在 Go 中实现并发。在本教程中，我们将讨论有关通道以及 goroutine 如何使用通道进行通信。
@@ -10,8 +12,6 @@ tags: Go
 ### 什么是通道？
 
 通道可以被认为是 goroutine 通信的通道。类似于水在管道中从一端流向另一端的方式，数据可以从一端发送，另一端使用通道接收。
-
-<!-- more -->
 
 ### 声明通道
 
@@ -21,10 +21,12 @@ tags: Go
 
 通道的零值是 `nil`。`nil` 通道是没有任何用处，因此必须使用 `make` 类似于 `map` 和 `slice` 来定义通道。
 
+<!-- more -->
+
 让我们写一些声明通道的代码。
 
 ```go
-func main() {
+func main() {  
     var a chan int
     if a == nil {
         fmt.Println("channel a is nil, going to define it")
@@ -34,14 +36,12 @@ func main() {
 }
 ```
 
-play: https://play.golang.org/p/oqrK1vDYCsz
-
 `var a chan int` 声明了一个通道，这时通道是零值(nil)的。在 if 条件内的语句定义了通道，这时通道的值是 int 的零值(0)。
 
 像往常一样，简写声明也是定义通道的有效而简洁的方法。
 
 ```go
-a := make(chan int)
+a := make(chan int)  
 ```
 
 ### 从通道发送和接收
@@ -49,8 +49,8 @@ a := make(chan int)
 下面给出了从通道发送和接收数据的语法。
 
 ```go
-data := <- a // read from channel a
-a <- data // write to channel a
+data := <- a // read from channel a  
+a <- data // write to channel a  
 ```
 
 箭头相对于通道的方向指定是发送或接收数据。
@@ -92,7 +92,7 @@ func main() {
 使用通道时要考虑的一个重要因素是**死锁**。如果 goroutine 正在通道上发送数据，那么预计其他一些 goroutine 应该接收数据。如果没有发生这种情况，程序将在运行时发生混乱。
 
 ```go
-func main() {
+func main() {  
     ch := make(chan int)
     ch <- 5
 }
@@ -103,8 +103,8 @@ func main() {
 ```shell
 fatal error: all goroutines are asleep - deadlock!
 
-goroutine 1 [chan send]:
-main.main()
+goroutine 1 [chan send]:  
+main.main()  
     /tmp/sandbox249677995/main.go:6 +0x80
 ```
 
@@ -113,11 +113,11 @@ main.main()
 到目前为止我们讨论的所有通信都是双向通道，即数据可以在它们上发送和接收。也可以创建单向通道，即仅发送或接收数据的通道。
 
 ```go
-func sendData(sendch chan<- int) {
+func sendData(sendch chan<- int) {  
     sendch <- 10
 }
 
-func main() {
+func main() {  
     sendch := make(chan<- int)
     go sendData(sendch)
     fmt.Println(<-sendch)
@@ -135,11 +135,11 @@ invalid operation: <-sendch (receive from send-only type chan<- int)
 修改为正确的代码如下：
 
 ```go
-func sendData(sendch chan<- int) {
+func sendData(sendch chan<- int) {  
     sendch <- 10
 }
 
-func main() {
+func main() {  
     chnl := make(chan int)
     go sendData(chnl)
     fmt.Println(<-chnl)
@@ -158,15 +158,102 @@ v, ok := <-ch
 
 如果 `ok`是 true，则表示成功从通道的发送操作接收到值。如果 `ok`是 false，则意味着我们正在从关闭的通道读取，从关闭通道读取的值是通道类型的零值。
 
-play：https://play.golang.org/p/XWmUKDA2Ri
+```go
+package main
+
+import (  
+    "fmt"
+)
+
+func producer(chnl chan int) {  
+    for i := 0; i < 10; i++ {
+        chnl <- i
+    }
+    close(chnl)
+}
+func main() {  
+    ch := make(chan int)
+    go producer(ch)
+    for {
+        v, ok := <-ch
+        if ok == false {
+            break
+        }
+        fmt.Println("Received ", v, ok)
+    }
+}
+```
 
 `for range` 语法亦可用于从通道接收值，直到它关闭。
 
 让我们使用 `for range` 重写上面的程序。
 
-play：https://play.golang.org/p/JJ3Ida1r_6
+```go
+package main
+
+import (  
+    "fmt"
+)
+
+func producer(chnl chan int) {  
+    for i := 0; i < 10; i++ {
+        chnl <- i
+    }
+    close(chnl)
+}
+func main() {  
+    ch := make(chan int)
+    go producer(ch)
+    for v := range ch {
+        fmt.Println("Received ",v)
+    }
+}
+```
 
 重写上一个教程中计算数字的例子：
 
-play：https://play.golang.org/p/oL86W9Ui03
+```go
+package main
 
+import (  
+    "fmt"
+)
+
+func digits(number int, dchnl chan int) {  
+    for number != 0 {
+        digit := number % 10
+        dchnl <- digit
+        number /= 10
+    }
+    close(dchnl)
+}
+func calcSquares(number int, squareop chan int) {  
+    sum := 0
+    dch := make(chan int)
+    go digits(number, dch)
+    for digit := range dch {
+        sum += digit * digit
+    }
+    squareop <- sum
+}
+
+func calcCubes(number int, cubeop chan int) {  
+    sum := 0
+    dch := make(chan int)
+    go digits(number, dch)
+    for digit := range dch {
+        sum += digit * digit * digit
+    }
+    cubeop <- sum
+}
+
+func main() {  
+    number := 589
+    sqrch := make(chan int)
+    cubech := make(chan int)
+    go calcSquares(number, sqrch)
+    go calcCubes(number, cubech)
+    squares, cubes := <-sqrch, <-cubech
+    fmt.Println("Final output", squares+cubes)
+}
+```

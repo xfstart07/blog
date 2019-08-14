@@ -2,29 +2,30 @@
 title: '[Go 教程系列笔记] Select'
 date: 2018-08-01 18:04:33
 categories: Go
-tags: Go
+tags: 
+    - Go
+    - Go教程系列笔记
 ---
-
 
 ### 什么是 select ？
 
-`select` 语句用于从多个**发送/接收**操作通道中进行选择。select 语句将阻塞，直到其中一个发送/接收操作准备就绪。如果多个操作都准备好，则随机选择其中一个操作。语法类似 `switch` 除了每个 case 语句都是通道操作。
-
-<!-- more -->
+`select` 语句用于从多个**发送/接收**操作通道中进行选择。select 语句是阻塞的，直到其中一个发送/接收操作准备就绪。如果多个操作都准备好，则随机选择其中一个操作。语法类似 `switch` 除了每个 case 语句都是通道操作。
 
 下面让我们来看一个例子以便更好的理解。
 
-```
-func server1(ch chan string) {
+<!-- more -->
+
+```go
+func server1(ch chan string) {  
     time.Sleep(6 * time.Second)
     ch <- "from server1"
 }
-func server2(ch chan string) {
+func server2(ch chan string) {  
     time.Sleep(3 * time.Second)
     ch <- "from server2"
 
 }
-func main() {
+func main() {  
     output1 := make(chan string)
     output2 := make(chan string)
     go server1(output1)
@@ -48,10 +49,18 @@ func main() {
 
 `select` 当其他 case 都没有准备好时，将执行 `default` 语句。这通常用于防止 select 语句阻塞。
 
+```go
+func main() {  
+    select {
+    default:
+        // do something
+    }
+}
+```
 ### Deadlock 和 default case
 
 ```go
-func main() {
+func main() {  
     ch := make(chan string)
     select {
     case <-ch:
@@ -64,15 +73,15 @@ func main() {
 ```
 fatal error: all goroutines are asleep - deadlock!
 
-goroutine 1 [chan receive]:
-main.main()
+goroutine 1 [chan receive]:  
+main.main()  
     /tmp/sandbox416567824/main.go:6 +0x80
 ```
 
 如果存在默认情况，则不会发生死锁的情况，因此在没有其他 case 准备就绪时将执行默认情况。
 
-```
-func main() {
+```go
+func main() {  
     ch := make(chan string)
     select {
     case <-ch:
@@ -89,7 +98,7 @@ func main() {
 ### 空 select
 
 ```go
-func main() {
+func main() {  
     select {}
 }
 ```
@@ -101,7 +110,7 @@ func main() {
 ```go
 fatal error: all goroutines are asleep - deadlock!
 
-goroutine 1 [select (no cases)]:
-main.main()
+goroutine 1 [select (no cases)]:  
+main.main()  
     /tmp/sandbox299546399/main.go:4 +0x20
 ```
