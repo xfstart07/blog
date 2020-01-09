@@ -19,6 +19,8 @@ tags:
 
 还有 `NewTLSServer` 创建使用TLS的服务器。
 
+<!--more-->
+
 ```go
 func Get(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "Hello, client")
