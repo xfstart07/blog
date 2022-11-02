@@ -7,4 +7,4 @@ comments: false
 ## 个人介绍
 
 徐飞(Leon Xu)，男
-专注于后端开发，Golang，Docker，Ruby。
+软件工程师，Golang，Docker，Ruby。
